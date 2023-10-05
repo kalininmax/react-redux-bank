@@ -1,0 +1,23 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react/prop-types */
+
+import { connect } from 'react-redux';
+
+const formatCurrency = (value) => {
+  return new Intl.NumberFormat('en', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(value);
+};
+
+const BalanceDisplay = ({ balance }) => {
+  return <div className="balance">{formatCurrency(balance)}</div>;
+};
+
+const mapStateToProps = (state) => {
+  return {
+    balance: state.account.balance,
+  };
+};
+
+export default connect(mapStateToProps)(BalanceDisplay);
